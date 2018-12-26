@@ -36,8 +36,15 @@ int main(int argc, char* argv[]) {
   auto pm_images = std::make_pair(cv::imread(s_image_name0,1),cv::imread(s_image_name1, 1));
   std::cout << " ... Done! " << std::endl;
 
-  cv::Mat m_depth = forwardProcess(module, pm_images);
+  cv::Mat m_color_map = forwardProcess(module, pm_images);
 
+  cv::imshow("depth-color-map(press q to quit)", m_color_map);
+  for(;;) {
+    if(cv::waitKey(50)=='q')
+      break;
+  }
+
+  cv::imwrite("depth_color_map.png", m_color_map);
   std::cout << " >>> Demo has finised !" << std::endl;
 
   return 0;
@@ -105,15 +112,9 @@ cv::Mat forwardProcess(const std::shared_ptr<torch::jit::script::Module>& module
     }
   }
   m_arranged_depth.convertTo(m_arranged_depth, CV_8U); 
-  // array = (255*tensor.squeeze().numpy()/max_value).clip(0, 255).astype(np.uint8)
   cv::Mat m_color_map;
   cv::applyColorMap(m_arranged_depth, m_color_map, cv::COLORMAP_RAINBOW);
   
-  cv::imshow("depth-color-map(press q to quit)", m_color_map);
-  for(;;) {
-    if(cv::waitKey(50)=='q')
-      break;
-  }
-  return m_arranged_depth;
+  return m_color_map;
 }
 

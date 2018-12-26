@@ -12,3 +12,4 @@ cpp_examples/build
 cpp_examples/libtorch
 cpp_examples/libtorch-shared-with-deps-latest.zip
 cpp_examples/wget-log
+cpp_examples/stub_box
