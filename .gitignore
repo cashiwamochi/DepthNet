@@ -1,0 +1,14 @@
+run_inference.py
+
+*.pt
+__pycache__/
+models/__pycache__/
+pretrained/
+results/
+stub_box.zip
+stub_box/
+
+cpp_examples/build
+cpp_examples/libtorch
+cpp_examples/libtorch-shared-with-deps-latest.zip
+cpp_examples/wget-log
