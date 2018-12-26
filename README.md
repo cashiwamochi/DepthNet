@@ -1,3 +1,44 @@
+# DepthNet C++ Frontend
+
+This repository is forked from [DepthNet](https://github.com/ClementPinard/DepthNet)    
+Additionally C++ frontend / API example (for PyTorch) is placed here. 
+If you want to use this, you should do the following.
+Now this supports only test part using pretrained models.
+
+## How to use
+
+0. Clone this repository.
+   ```shell
+   git clone https://github.com/cashiwamochi/DepthNet.git depth_net_cpp
+   ```
+
+1. Download pretrained models which the author released.
+
+2. Export a model using `export_model.py`
+   ```shell
+   python export_model.py --pretrained ./--pretrained ./pretrained/DepthNet_elu_bn_512.pth.tar
+   ```
+   
+3. Download and unzip libtorch. This is necessary if we use cpp-frontend of PyTroch.
+   ```shell
+   cd cpp_examples && bash setup_libtorch.sh
+   ```
+
+4. Compile `depth_net_demo.cpp` using `CMake`. You need OpenCV.
+   ```shell
+   mkdir build && cd build
+   cmake .. && make
+   ```
+ 
+ 5. Execute `depth_net_demo` !
+    ```shell
+    ./depth_net_demo ./../../DepthNet_h512_w512_cpu.pt ./../../stub_box/RGB_00_001.jpg ./../../stub_box/RGB_00_004.jpg 
+    ```
+
+## Results
+  BUILDING ... 
+
+-------------------------------------------------
 # DepthNet training on Still Box
 
 ### [Project page](http://perso.ensta-paristech.fr/~pinard/depthnet/)
