@@ -16,7 +16,7 @@ Now this supports only test part using pretrained models.
 
 2. Export a model using `export_model.py`
    ```shell
-   python export_model.py --pretrained ./--pretrained ./pretrained/DepthNet_elu_bn_512.pth.tar
+   python export_model.py --pretrained ./pretrained/DepthNet_elu_bn_512.pth.tar
    ```
    
 3. Download and unzip libtorch. This is necessary if we use cpp-frontend of PyTroch.
