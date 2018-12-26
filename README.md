@@ -30,13 +30,15 @@ Now this supports only test part using pretrained models.
    cmake .. && make
    ```
  
- 5. Execute `depth_net_demo` !
+ 5. Download test data and Execute `depth_net_demo` !
     ```shell
-    ./depth_net_demo ./../../DepthNet_h512_w512_cpu.pt ./../../stub_box/RGB_00_001.jpg ./../../stub_box/RGB_00_004.jpg 
+    bash download_test.sh
+    ./depth_net_demo ./../../DepthNet_h512_w512_cpu.pt ./../stub_box/RGB_00_001.jpg ./../stub_box/RGB_00_004.jpg 
     ```
 
 ## Results
-  BUILDING ... 
+
+![sample_gif](https://github.com/cashiwamochi/DepthNet/blob/master/cpp_examples/result_images/result.gif)
 
 -------------------------------------------------
 # DepthNet training on Still Box
