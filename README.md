@@ -38,7 +38,8 @@ Now this supports only test part using pretrained models.
 
 ## Results
 
-![sample_gif](https://github.com/cashiwamochi/DepthNet/blob/master/cpp_examples/result_images/result.gif)
+![sample_gif0](https://github.com/cashiwamochi/DepthNet/blob/master/cpp_examples/result_images/result.gif)
+![sample_gif1](https://github.com/cashiwamochi/DepthNet/blob/master/cpp_examples/result_images/original.gif)
 
 -------------------------------------------------
 # DepthNet training on Still Box
