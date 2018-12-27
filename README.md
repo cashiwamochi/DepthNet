@@ -13,6 +13,9 @@ Now this supports only test part using pretrained models.
    ```
 
 1. Download pretrained models which the author released.
+   ```shell
+   bash download_pretrained.sh
+   ```
 
 2. Export a model using `export_model.py`
    ```shell
