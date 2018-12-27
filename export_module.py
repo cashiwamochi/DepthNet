@@ -15,21 +15,24 @@ parser = argparse.ArgumentParser(description='Export model using torch.jit.trace
 
 parser.add_argument("--img-height", default=512, type=int, help="Image height")
 parser.add_argument("--img-width", default=512, type=int, help="Image width")
-parser.add_argument("--cuda", default=False, type=bool, help="use GPU")
+# parser.add_argument("--cuda", default=False, type=bool, help="use GPU")
 
 parser.add_argument("--pretrained", required=True, type=str, help="pretrained DepthNet path")
 
 @torch.no_grad()
 def main():
     args = parser.parse_args()
-    if args.cuda:
-        device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-        mode = "gpu" if torch.cuda.is_available() else "cpu"
-    else:
-        device = torch.device("cpu")
-        mode = "cpu"
+    # if args.cuda:
+    #     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+    #     mode = "gpu" if torch.cuda.is_available() else "cpu"
+    # else:
+    #     device = torch.device("cpu")
+    #     mode = "cpu"
 
-    weights = torch.load(args.pretrained)
+    device = torch.device("cpu")
+    mode = "cpu"
+
+    weights = torch.load(args.pretrained, map_location='cpu')
     depth_net = DepthNet(batch_norm=weights['bn'],
                          depth_activation=weights['activation_function'],
                          clamp=weights['clamp']).to(device)

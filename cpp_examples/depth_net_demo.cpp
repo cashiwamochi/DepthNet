@@ -70,15 +70,18 @@ cv::Mat forwardProcess(const std::shared_ptr<torch::jit::script::Module>& module
 
   cv::Mat mf_input = cv::Mat::zeros(height*channel*2, width, CV_32FC1);
 
-  cv::Mat m_bgr0[channel],m_bgr1[channel], mf_rgb_rgb[channel*2];
-  cv::split(pm_images.first, m_bgr0);
+  // cv::Mat m_bgr0[channel],m_bgr1[channel], mf_rgb_rgb[channel*2];
+  cv::Mat m_bgr[channel], mf_rgb_rgb[channel*2];
+  cv::split(pm_images.first, m_bgr);
   for(int i = 0; i < 3; i++) {
-    m_bgr0[i].convertTo(mf_rgb_rgb[2-i], CV_32FC1, 1.0/255.0, -0.5); 
+    m_bgr[i].convertTo(mf_rgb_rgb[2-i], CV_32FC1, 1.0/255.0, -0.5); 
+    m_bgr[i].release();
   }
 
-  cv::split(pm_images.second, m_bgr1);
+  cv::split(pm_images.second, m_bgr);
   for(int i = 0; i < 3; i++) {
-    m_bgr1[i].convertTo(mf_rgb_rgb[5-i], CV_32FC1, 1.0/255.0, -0.5); 
+    m_bgr[i].convertTo(mf_rgb_rgb[5-i], CV_32FC1, 1.0/255.0, -0.5); 
+    m_bgr[i].release();
   }
 
   for (int i = 0; i < 6; i++) {

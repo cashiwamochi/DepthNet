@@ -8,6 +8,9 @@ results/
 stub_box.zip
 stub_box/
 
+*.pyc
+models/
+
 cpp_examples/build
 cpp_examples/libtorch
 cpp_examples/libtorch-shared-with-deps-latest.zip
